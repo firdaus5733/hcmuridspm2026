@@ -24,7 +24,7 @@
 </head>
 <body class="bg-slate-50 font-sans text-slate-900 min-h-screen">
 
-    <!-- Navbar -->
+    <!-- Navigasi Utama -->
     <nav class="bg-blue-800 text-white p-4 shadow-lg no-print">
         <div class="max-w-6xl mx-auto flex justify-between items-center">
             <div class="flex items-center gap-2 font-bold text-lg">
@@ -39,14 +39,12 @@
     </nav>
 
     <main class="max-w-6xl mx-auto p-4 md:p-8">
-        
-        <!-- Header -->
         <header class="text-center mb-10 no-print">
             <h1 class="text-3xl md:text-4xl font-black text-slate-800 uppercase tracking-tighter">Semakan Prestasi Murid</h1>
             <p class="text-slate-500 font-medium">Sila masukkan No. Kad Pengenalan untuk melihat analisis headcount</p>
         </header>
 
-        <!-- Search Box -->
+        <!-- Bahagian Carian -->
         <div class="bg-white p-6 md:p-10 rounded-2xl shadow-xl border-t-4 border-blue-600 mb-8 no-print">
             <div class="max-w-2xl mx-auto">
                 <label class="block text-center text-xs font-black text-slate-400 uppercase tracking-[0.2em] mb-4">
@@ -63,21 +61,20 @@
                         <i id="btnIcon" data-lucide="arrow-right" class="w-5 h-5"></i>
                     </button>
                 </div>
-                <p id="dataStatus" class="mt-4 text-center text-[10px] text-slate-400 font-medium uppercase tracking-widest">
-                    Menghubungkan ke Pangkalan Data Drive...
+                <p id="dataStatus" class="mt-4 text-center text-[10px] text-slate-400 font-medium uppercase tracking-widest italic">
+                    Menyambung ke Pangkalan Data...
                 </p>
             </div>
         </div>
 
-        <!-- Error State -->
+        <!-- Mesej Ralat -->
         <div id="errorMessage" class="hidden bg-red-50 border border-red-100 text-red-600 p-6 rounded-xl text-center mb-8 flex flex-col items-center gap-2">
             <i data-lucide="alert-circle" class="w-8 h-8"></i>
             <p id="errorText" class="font-bold"></p>
         </div>
 
-        <!-- Results Display -->
+        <!-- Kawasan Paparan Keputusan -->
         <div id="resultsArea" class="hidden space-y-6">
-            <!-- Profil Murid -->
             <div class="bg-white p-6 md:p-8 rounded-2xl shadow-md border-l-8 border-blue-600">
                 <div class="grid md:grid-cols-2 gap-6">
                     <div>
@@ -96,7 +93,6 @@
                 </div>
             </div>
 
-            <!-- Table -->
             <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-slate-100">
                 <div class="overflow-x-auto">
                     <table class="w-full text-sm text-left">
@@ -110,37 +106,21 @@
                                 <th class="px-3 py-4">BEZA</th>
                             </tr>
                         </thead>
-                        <tbody id="tableBody" class="divide-y divide-slate-100">
-                            <!-- Data rows injected here -->
-                        </tbody>
+                        <tbody id="tableBody" class="divide-y divide-slate-100"></tbody>
                     </table>
                 </div>
 
-                <!-- Glossary Footer -->
+                <!-- Glosari -->
                 <div class="p-6 bg-slate-50 border-t border-slate-100">
                     <div class="flex items-start gap-4">
-                        <div class="p-2 bg-blue-100 text-blue-700 rounded-lg">
-                            <i data-lucide="info" class="w-5 h-5"></i>
-                        </div>
+                        <div class="p-2 bg-blue-100 text-blue-700 rounded-lg"><i data-lucide="info" class="w-5 h-5"></i></div>
                         <div class="flex-1">
                             <h3 class="font-bold text-slate-800 text-sm uppercase tracking-wide mb-3">Glosari Istilah Analisis</h3>
                             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
-                                <div class="bg-white p-2 rounded border border-slate-200">
-                                    <span class="font-bold text-blue-700 block">TOV</span>
-                                    <span class="text-slate-500">PAT Tingkatan 4</span>
-                                </div>
-                                <div class="bg-white p-2 rounded border border-slate-200">
-                                    <span class="font-bold text-blue-700 block">OTR 1</span>
-                                    <span class="text-slate-500">PPT Tingkatan 5</span>
-                                </div>
-                                <div class="bg-white p-2 rounded border border-slate-200">
-                                    <span class="font-bold text-blue-700 block">OTR 2</span>
-                                    <span class="text-slate-500">Percubaan SPM</span>
-                                </div>
-                                <div class="bg-white p-2 rounded border border-slate-200">
-                                    <span class="font-bold text-blue-700 block">ETR</span>
-                                    <span class="text-slate-500">Sasaran SPM 2026</span>
-                                </div>
+                                <div class="bg-white p-2 rounded border border-slate-200"><span class="font-bold text-blue-700 block">TOV</span>PAT Tingkatan 4</div>
+                                <div class="bg-white p-2 rounded border border-slate-200"><span class="font-bold text-blue-700 block">OTR 1</span>PPT Tingkatan 5</div>
+                                <div class="bg-white p-2 rounded border border-slate-200"><span class="font-bold text-blue-700 block">OTR 2</span>Percubaan SPM</div>
+                                <div class="bg-white p-2 rounded border border-slate-200"><span class="font-bold text-blue-700 block">ETR</span>Sasaran SPM 2026</div>
                             </div>
                         </div>
                     </div>
@@ -154,12 +134,10 @@
     </footer>
 
     <script>
-        // Initialization
         lucide.createIcons();
         
-        // Pautan fail CSV (Export direct link for Google Drive)
-        const FILE_ID = "1eVDBVjNKIPWa9CR8cwWj5zh0zcH2vLKc";
-        const CSV_URL = `https://docs.google.com/spreadsheets/d/${FILE_ID}/export?format=csv`;
+        // Pautan fail CSV yang telah di-publish dari Google Sheets
+        const PUBLISHED_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSodUOEOzSGB_se_w_OS2pLTTqzu-C5E0juX9F_yNNReX4lm4s1--Eb2eH7giV0hhur7iL98uJferFt/pub?output=csv";
 
         let masterData = [];
         const icInput = document.getElementById('icInput');
@@ -167,27 +145,27 @@
         const resultsArea = document.getElementById('resultsArea');
         const statusText = document.getElementById('dataStatus');
 
-        // Pre-fetch data to memory for instant search
+        // Memuatkan data ke dalam memori
         async function loadDatabase() {
             try {
-                statusText.innerText = "Memuat turun data dari Drive...";
+                statusText.innerText = "Sila tunggu, memuat turun data...";
                 
-                Papa.parse(CSV_URL, {
+                Papa.parse(PUBLISHED_URL, {
                     download: true,
                     header: true,
                     skipEmptyLines: true,
                     complete: function(results) {
                         masterData = results.data.map(row => {
-                            // Normalize IC numbers by removing dashes
-                            const rawIc = row['No. KP'] || "";
-                            return { ...row, cleanIc: rawIc.replace(/-/g, '').trim() };
+                            // Mencari nama kolum IC yang mungkin berbeza (No. KP / ic / No_KP)
+                            const rawIc = row['No. KP'] || row['ic'] || row['No_KP'] || "";
+                            return { ...row, cleanIc: rawIc.toString().replace(/-/g, '').trim() };
                         });
-                        statusText.innerText = "Sistem Sedia: Data Berjaya Dihubungkan";
+                        statusText.innerText = "Pangkalan Data Sedia: " + masterData.length + " rekod dimuatkan.";
                         statusText.classList.replace('text-slate-400', 'text-green-600');
                     },
                     error: function(err) {
-                        console.error("CSV Load Error:", err);
-                        statusText.innerText = "Ralat: Gagal mencapai data Drive";
+                        console.error("Fetch Error:", err);
+                        statusText.innerText = "Ralat: Gagal mencapai data web. Sila periksa pautan Google Sheets.";
                         statusText.classList.replace('text-slate-400', 'text-red-600');
                     }
                 });
@@ -198,7 +176,6 @@
 
         loadDatabase();
 
-        // Search Handlers
         searchBtn.addEventListener('click', doSearch);
         icInput.addEventListener('keypress', (e) => e.key === 'Enter' && doSearch());
 
@@ -210,71 +187,58 @@
             resultsArea.classList.add('hidden');
             setLoading(true);
 
-            setTimeout(() => {
-                const matches = masterData.filter(m => m.cleanIc === queryIc);
+            // Carian pantas dalam senarai data
+            const matches = masterData.filter(m => m.cleanIc === queryIc);
 
-                if (matches.length > 0) {
-                    renderResults(matches);
-                } else {
-                    showError(`No. KP ${queryIc} tidak dijumpai. Sila pastikan data anda telah didaftarkan.`);
-                }
-                setLoading(false);
-            }, 500);
+            if (matches.length > 0) {
+                renderResults(matches);
+            } else {
+                showError(`No. KP ${queryIc} tidak dijumpai. Sila pastikan No. KP dimasukkan dengan betul.`);
+            }
+            setLoading(false);
         }
 
         function renderResults(data) {
-            document.getElementById('resNama').innerText = data[0]['Nama Murid'];
-            document.getElementById('resSekolah').innerText = `${data[0]['Kelas '] || '-'} | ${data[0]['Kod | Sekolah']}`;
+            // Papar profil murid
+            document.getElementById('resNama').innerText = data[0]['Nama Murid'] || "TIADA NAMA";
+            document.getElementById('resSekolah').innerText = `${data[0]['Kelas '] || '-'} | ${data[0]['Kod | Sekolah'] || 'N/A'}`;
             
             const tbody = document.getElementById('tableBody');
             tbody.innerHTML = '';
 
+            // Papar baris mata pelajaran
             data.forEach(item => {
                 const tr = document.createElement('tr');
                 tr.className = "hover:bg-slate-50 transition text-center font-medium";
                 tr.innerHTML = `
-                    <td class="px-6 py-4 font-bold text-slate-800 text-left border-l-4 border-transparent hover:border-blue-600">${item.MP}</td>
-                    <td class="px-3 py-4">
-                        <div class="text-slate-700">${item.TOV}</div>
-                        <span class="text-[9px] px-2 py-0.5 rounded-full border ${getGradeColor(item.GTOV)}">${item.GTOV}</span>
-                    </td>
-                    <td class="px-3 py-4">
-                        <div class="text-slate-700">${item['OTR 1']}</div>
-                        <span class="text-[9px] px-2 py-0.5 rounded-full border ${getGradeColor(item['G OTR1'])}">${item['G OTR1']}</span>
-                    </td>
-                    <td class="px-3 py-4">
-                        <div class="text-slate-700">${item['OTR 2']}</div>
-                        <span class="text-[9px] px-2 py-0.5 rounded-full border ${getGradeColor(item['G OTR 2'])}">${item['G OTR 2']}</span>
-                    </td>
-                    <td class="px-3 py-4 bg-blue-50 font-bold border-x border-blue-100">
-                        <div class="text-blue-900">${item.ETR}</div>
-                        <span class="text-[9px] px-2 py-0.5 rounded-full border ${getGradeColor(item['G ETR'])}">${item['G ETR']}</span>
-                    </td>
-                    <td class="px-3 py-4 font-bold text-slate-500">${item['TOV-ETR']}</td>
+                    <td class="px-6 py-4 font-bold text-slate-800 text-left">${item.MP || '-'}</td>
+                    <td class="px-3 py-4"><div>${item.TOV || '-'}</div><span class="text-[9px] px-2 py-0.5 rounded-full border ${getGradeColor(item.GTOV)}">${item.GTOV || '-'}</span></td>
+                    <td class="px-3 py-4"><div>${item['OTR 1'] || '-'}</div><span class="text-[9px] px-2 py-0.5 rounded-full border ${getGradeColor(item['G OTR1'])}">${item['G OTR1'] || '-'}</span></td>
+                    <td class="px-3 py-4"><div>${item['OTR 2'] || '-'}</div><span class="text-[9px] px-2 py-0.5 rounded-full border ${getGradeColor(item['G OTR 2'])}">${item['G OTR 2'] || '-'}</span></td>
+                    <td class="px-3 py-4 bg-blue-50 font-bold border-x border-blue-100"><div class="text-blue-900">${item.ETR || '-'}</div><span class="text-[9px] px-2 py-0.5 rounded-full border ${getGradeColor(item['G ETR'])}">${item['G ETR'] || '-'}</span></td>
+                    <td class="px-3 py-4 font-bold text-slate-500">${item['TOV-ETR'] || '-'}</td>
                 `;
                 tbody.appendChild(tr);
             });
-
             resultsArea.classList.remove('hidden');
             resultsArea.scrollIntoView({ behavior: 'smooth' });
         }
 
         function getGradeColor(g) {
             if (!g) return 'bg-gray-50 border-gray-200';
-            g = g.toString().toUpperCase();
+            g = g.toString().toUpperCase().trim();
             if (g.startsWith('A')) return 'bg-green-50 text-green-700 border-green-200';
             if (g.startsWith('B')) return 'bg-blue-50 text-blue-700 border-blue-200';
             if (g.startsWith('C')) return 'bg-yellow-50 text-yellow-700 border-yellow-200';
             if (g.startsWith('D')) return 'bg-orange-50 text-orange-700 border-orange-200';
             if (g.startsWith('E')) return 'bg-pink-50 text-pink-700 border-pink-200';
-            if (g.startsWith('G')) return 'bg-red-50 text-red-700 border-red-200';
+            if (g.startsWith('G') || g.startsWith('F')) return 'bg-red-50 text-red-700 border-red-200';
             return 'bg-gray-50 border-gray-200';
         }
 
         function setLoading(l) {
             searchBtn.disabled = l;
             document.getElementById('btnText').innerText = l ? "MENCARI..." : "SEMAK";
-            document.getElementById('btnIcon').className = l ? "hidden" : "w-5 h-5";
         }
 
         function showError(msg) {
